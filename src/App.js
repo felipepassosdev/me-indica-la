@@ -12,7 +12,7 @@ function App() {
     <>
     <Navbar/>
     <Switch>
-    <Route path="/" exact component={Inicial} />
+    {/* <Route path="/" exact component={Inicial} /> */}
     <Route path="/backend" exact component={Backtend} /> 
     <Route path="/frontend" exact component={Frontend} />                                 
     </Switch>

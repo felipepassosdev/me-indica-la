@@ -15,13 +15,22 @@ class Inicial extends Component {
             <>
                 <div className="container">
                     <div className="mb-3"></div>
-                    <h2>Vagas Front-end</h2>
                     <hr />
                     <div className="row">
                         <div className="col-md-6">
                             <div className="card d-flex margin-bottom shadow-lg" >
                                 <div className="card-header">
+                                    <h1>Front-end</h1>
+                                </div>
+                                <div className="card-body">
 
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-md-6">
+                            <div className="card d-flex margin-bottom shadow-lg" >
+                                <div className="card-header">
+                                    <h1>Back-end</h1>
                                 </div>
                                 <div className="card-body">
 
