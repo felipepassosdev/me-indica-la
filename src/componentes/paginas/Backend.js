@@ -39,7 +39,7 @@ class Backtend extends Component {
             <>
                 <div className="container">
                     <div className="mb-3"></div>
-                    <h2>Vagas Front-end</h2>
+                    <h2>Vagas Back-end</h2>
                     <hr />
                     {state.Dados.map((dd, index) => (
                         <>
