@@ -13,15 +13,16 @@ class Frontend extends Component {
         fetch('https://api.github.com/repos/frontendbr/vagas/issues')
             .then(response => response.json())
             .then(response => {
-                response.map((dados) => {
-                    console.log(dados.body)
+                response.map((dados, i) => {
+                    console.log(dados.labels)
                     this.setState({
                         Dados: [
                             ...this.state.Dados, {
                                 titulo: dados.title,
                                 descricao: dados.body,
                                 imagem: dados.user.avatar_url,
-                                estado: dados.state
+                                estado: dados.state,
+                                tags: dados.labels[0].name
                             }
                         ]
                     })
@@ -41,20 +42,22 @@ class Frontend extends Component {
                     <div className="mb-3"></div>
                     <h2>Vagas Front-end</h2>
                     <hr />
-                    {state.Dados.map((dd, index) => (
+                    {state.Dados.map((dados, index) => (
                         <>
                             <div className="row">
                                 <div key={index} className="col-md-12">
                                     <div className="card d-flex margin-bottom shadow-lg" >
                                         <div className="card-header" key={index}>
-                                            <a href={dd.url} target="_blank" rel="noopener noreferrer"><h5 className="text-danger">{dd.titulo}</h5></a>
+                                            <a href={dados.url} target="_blank" rel="noopener noreferrer"><h5 className="text-danger">{dados.titulo}</h5></a>
                                         </div>
                                         <div className="card-body">
-                                            {dd.descricao}
+                                            <p>{dados.descricao}</p>
                                             <hr></hr>
                                             <h5 className="card-text">Vaga:
-                                                {dd.estado === 'open' ? ' Aberta' : ' Fechada'}
+                                                {dados.estado === 'open' ? ' Aberta' : ' Fechada'}
                                             </h5>
+                                            <hr></hr>
+                                            <div className="tags text-white bg-primary rounded"><h4>#{dados.tags}</h4></div>
                                         </div>
                                     </div>
                                 </div>

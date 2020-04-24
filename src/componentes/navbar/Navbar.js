@@ -12,10 +12,13 @@ class Navbar extends Component {
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item active">
-                        <Link to="/frontend" className="nav-link text-dark"><h5>Front-end</h5></Link>
+                            <Link to="/frontend" className="nav-link text-dark"><h5>Front-end</h5></Link>
                         </li>
                         <li class="nav-item">
-                        <Link to="/backend" className="nav-link text-dark"><h5>Back-end</h5></Link>
+                            <Link to="/backend" className="nav-link text-dark"><h5>Back-end</h5></Link>
+                        </li>
+                        <li class="nav-item">
+                            <Link to="/mobile" className="nav-link text-dark"><h5>Mobile</h5></Link>
                         </li>
                     </ul>
                 </div>
