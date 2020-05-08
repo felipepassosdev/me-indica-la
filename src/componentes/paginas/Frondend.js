@@ -8,7 +8,7 @@ class Frontend extends Component {
             Dados: [],
         })
     }
-
+    
     getAPI = () => {
         fetch('https://api.github.com/repos/frontendbr/vagas/issues')
             .then(response => response.json())
