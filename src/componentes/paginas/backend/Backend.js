@@ -1,70 +1,49 @@
 import React, { Component } from 'react'
+import Card from '../../card/Card'
+import Container from '../../container/Container'
+import { List, Title } from './styles';
+import api from '../../../services/api';
 
 class Backtend extends Component {
-    constructor(props) {
-        super(props)
+    state = {
+        repositories: [],
+    }
 
-        this.state = ({
-            Dados: [],
+    componentDidMount() {
+        this.apiRepositories()
+    }
+
+    apiRepositories = async () => {
+        const response = await api.get(`/repos/backend-br/vagas/issues`, {
+            params: {
+                state: 'open',
+            },
+        })
+        
+        this.setState({
+            repositories: response.data
         })
     }
 
-    getAPI = () => {
-        fetch('https://api.github.com/repos/backend-br/vagas/issues')
-            .then(response => response.json())
-            .then(response => {
-                response.map((dados) => {
-                    console.log(dados.body)
-                    this.setState({
-                        Dados: [
-                            ...this.state.Dados, {
-                                titulo: dados.title,
-                                descricao: dados.body,
-                                imagem: dados.user.avatar_url,
-                                estado: dados.state
-                            }
-                        ]
-                    })
-                })
-            })
-    }
-
-    componentDidMount = () => {
-        this.getAPI()
-    }
 
     render = () => {
-        const state = this.state
+        const { repositories } = this.state;
         return (
             <>
-                <div className="container">
-                    <div className="mb-3"></div>
-                    <h2>Vagas Back-end</h2>
-                    <hr />
-                    {state.Dados.map((dd, index) => (
-                        <>
-                            <div className="row">
-                                <div key={index} className="col-md-12">
-                                    <div className="card d-flex margin-bottom shadow-lg" >
-                                        <div className="card-header" key={index}>
-                                            <a href={dd.url} target="_blank" rel="noopener noreferrer"><h5 className="text-danger">{dd.titulo}</h5></a>
-                                        </div>
-                                        <div className="card-body">
-                                            {dd.descricao}
-                                            <hr></hr>
-                                            <h5 className="card-text">Vaga:
-                                                {dd.estado === 'open' ? ' Aberta' : ' Fechada'}
-                                            </h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="mb-3"></div>
-                        </>
-                    )
-                    )}
-
-                </div>
+                <Container>
+                    <h5>Vagas Frontend</h5>
+                    {repositories.map(repo => (
+                        <Card>
+                            <List>
+                                <li key={repo.id}>
+                                    <Title>{repo.title}</Title>
+                                </li>
+                                <p>{repo.body}</p>
+                                <h5>{repo.state === 'open' ? ' Vaga: Aberta' : 'Vaga: Fechada'}</h5>
+                            </List>
+                        </Card>
+                    ))}
+                </Container>
             </>
         )
     }
