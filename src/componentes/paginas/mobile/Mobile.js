@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import api from '../../../services/api'
+import Card from '../../card/Card'
 import Container from '../../container/Container'
-import { List } from './styles';
+import { List, Title } from './styles';
 
 class Mobile extends Component {
     state = {
@@ -29,21 +30,24 @@ class Mobile extends Component {
 
 
     render() {
-        const { repositories, labels } = this.state;
+        const { repositories } = this.state;
 
         return (
             <>
-                {repositories.map(repo => (
-                    <Container>
-                        <List>
-                            <li key={repo.id}>
-                                <h1>{repo.title}</h1>
-                            </li>
-                            <p>{repo.body}</p>
-                            <h5>{repo.state === 'open' ? ' Aberta' : ' Fechada'}</h5>
-                        </List>
-                    </Container>
-                ))}
+                <Container>
+                    <h5>Vagas Mobile</h5>
+                    {repositories.map(repo => (
+                        <Card>
+                            <List>
+                                <li key={repo.id}>
+                                    <Title>{repo.title}</Title>
+                                </li>
+                                <p>{repo.body}</p>
+                                <h5>{repo.state === 'open' ? ' Vaga: Aberta' : 'Vaga: Fechada'}</h5>
+                            </List>
+                        </Card>
+                    ))}
+                </Container>
             </>
         )
     }
