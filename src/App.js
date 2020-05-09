@@ -3,8 +3,8 @@ import { Switch, Route } from 'react-router-dom';
 import './App.css';
 import GlobalStyle from './styles/global'
 import Navbar from './componentes/navbar/Navbar';
-import Backtend from './componentes/paginas/Backend';
-import Frontend from './componentes/paginas/Frondend';
+import Backtend from './componentes/paginas/backend/Backend';
+import Frontend from './componentes/paginas/frontend/Frontend';
 import Mobile from './componentes/paginas/mobile/Mobile';
 
 
