@@ -6,12 +6,10 @@ import { List } from './styles';
 class Mobile extends Component {
     state = {
         repositories: [],
-        labels: []
     }
 
     componentDidMount() {
         this.apiRepositories();
-        this.apiLabels()
     }
 
     apiRepositories = async () => {
@@ -27,18 +25,6 @@ class Mobile extends Component {
             repositories: response.data,
         })
 
-    }
-
-    apiLabels = async () => {
-        const response = await api.get(`androiddevbr/vagas/issues`, {
-            params: {
-                state: 'open',
-            },
-        })
-
-        this.setState({
-            labels: response.data
-        })
     }
 
 
