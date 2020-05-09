@@ -39,7 +39,7 @@ class Frontend extends Component {
                                     <Title>{repo.title}</Title>
                                 </li>
                                 <p>{repo.body}</p>
-                                <h5>{repo.state === 'open' ? ' Aberta' : ' Fechada'}</h5>
+                                <h5>{repo.state === 'open' ? ' Vaga: Aberta' : 'Vaga: Fechada'}</h5>
                             </List>
                         </Card>
                     ))}
