@@ -5,3 +5,7 @@ export const List = styled.ul`
     border-bottom: 1px solid #eee;
     margin-bottom: 30px;
 `;
+
+export const Title = styled.h5`
+    color: #dc3545!important;
+`;
